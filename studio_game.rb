@@ -3,22 +3,26 @@ player_health = 60
 
 
 class Player
-  def initialize(name, health = 100)
-    @name = name
-    @health = health
-  end
+    attr_accessor :name, :score
+    attr_reader :health
 
-  def to_s
-    "I am #{@name.capitalize} with a health of #{@health}"
-  end
+    def initialize(name, health = 100)
+        @name = name
+        @health = health
+        @score = name.length + health
+    end
 
-  def boost
-    @health += 15
-  end
+    def to_s
+        "I am #{@name.capitalize} with a health of #{@health} and a score of #{@score}"
+    end
 
-  def drain
-    @health -= 10
-  end
+    def boost
+        @health += 15
+    end
+
+    def drain
+        @health -= 10
+    end
 end
 
 
