@@ -1,4 +1,7 @@
 class Game
+
+  attr_reader :players
+
   def initialize(name)
     @name = name
     @players = []
