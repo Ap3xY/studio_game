@@ -1,5 +1,5 @@
-require_relative "player"
-require_relative "game"
+require_relative "./lib/game"
+require_relative "./lib/player"
 
 player_1 = Player.new("Alex", 60)
 player_2 = Player.new("Sheldon", 90)
@@ -11,7 +11,7 @@ game.add_player(player_1)
 game.add_player(player_2)
 game.add_player(player_3)
 game.add_player(player_4)
-game.play
+game.play(3)
 
 
 

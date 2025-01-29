@@ -26,11 +26,23 @@ class GameTest < Minitest::Test
     assert_equal [@test_player_1], @test_game.players
   end
 
+  def test_game_plays_specified_number_of_rounds
+    @test_game.add_player(@test_player_1)
+
+    number_of_rounds = 1
+
+    @test_game.stub(:roll_die, 5) do
+      @test_game.play(number_of_rounds)
+
+      assert_equal 115, @test_player_1.health
+    end
+  end
+
   def test_game_boosts_the_players_if_a_high_number_is_rolled
     @test_game.add_player(@test_player_1)
 
     @test_game.stub(:roll_die, 5) do
-      @test_game.play()
+      @test_game.play(1)
 
       assert_equal 115, @test_player_1.health
     end
@@ -40,7 +52,7 @@ class GameTest < Minitest::Test
     @test_game.add_player(@test_player_1)
 
     @test_game.stub(:roll_die, 4) do
-      @test_game.play()
+      @test_game.play(1)
 
       assert_equal 100, @test_player_1.health
     end
@@ -50,7 +62,7 @@ class GameTest < Minitest::Test
     @test_game.add_player(@test_player_1)
 
     @test_game.stub(:roll_die, 2) do
-      @test_game.play()
+      @test_game.play(1)
 
       assert_equal 90, @test_player_1.health
     end

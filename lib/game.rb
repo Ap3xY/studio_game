@@ -15,10 +15,13 @@ class Game
     rand(1..6)
   end
 
-  def play
+  def play(rounds)
     puts "Let's play a game!\n3\n2\n1\n\n"
 
-    @players.each do | player |
+    1.upto(rounds) do |round|
+      puts "\nRound #{round}:"
+
+      @players.each do | player |
         case roll_die
         when 1..2
             player.drain
@@ -29,8 +32,8 @@ class Game
             player.boost
             puts "#{player.name} got boosted 😁"
         end
+      end
     end
-
     puts "\nAfter playing:"
     puts @players
   end
