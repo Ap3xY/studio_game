@@ -41,6 +41,7 @@ class Game
         end
 
         treasure = TreasureTrove.random_treasure
+        player.add_treasure(treasure.name, treasure.points)
         puts "#{player.name} found a #{treasure.name} worth #{treasure.points} points"
       end
     end

@@ -12,6 +12,6 @@ module TreasureTrove
   ]
 
   def self.random_treasure
-   Treasure.sample
+    TREASURES.sample
   end
 end
