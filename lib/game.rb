@@ -17,13 +17,24 @@ class Game
     rand(1..6)
   end
 
+  def print_stats
+    puts "\nHigh Scores:"
+    sorted_players.each do |player|
+      name = player.name.ljust(20, ".")
+      points = player.score.round.to_s.rjust(5)
+      puts "#{name}#{points}"
+    end
+  end
+
+  def sorted_players
+    @players.sort_by { |player| player.score }.reverse
+  end
+
   def play(rounds)
     puts "Let's play a game!\n3\n2\n1\n"
 
     puts "\nThe following treasures can be found:"
-    TreasureTrove::TREASURES.each do |treasure|
-      puts "A #{treasure.name} is worth #{treasure.points} points"
-    end
+    puts TreasureTrove.treasure_items
 
     1.upto(rounds) do |round|
       puts "\nRound #{round}:"
