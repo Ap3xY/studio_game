@@ -14,6 +14,9 @@ class Game
       player = Player.from_csv(line)
       add_player(player)
     end
+  rescue Errno::ENOENT => e
+    puts e.message
+    exit 1
   end
 
   def save_high_scores(to_file = "high_scores.txt")
